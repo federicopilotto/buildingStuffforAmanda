@@ -35,7 +35,7 @@
   button {
     font: inherit;
     font-size: 1.5rem;
-    padding: 1.5rem 4rem;
+    padding: 1rem 4rem;
     border: 2px solid var(--accent);
     border-radius: 999px;
     background: var(--accent);
@@ -44,10 +44,17 @@
     transition: left 0.25s ease, top 0.25s ease;
     
   }
-  button:hover { background: #f70000; }
+
+
   button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
-  #messaggio {
+  #mex1 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-align: center;
+    max-width: 90vw;
+  }
+  #mex2 {
     font-size: 1.5rem;
     color: var(--accent);
     text-align: center;
@@ -57,7 +64,8 @@
 </head>
 <body>
   <h2>do you love me?</h2>
-  <div id="messaggio" hidden>so you don't love me...</div>
+  <div id="mex1" hidden>so you don't love me...</div>
+  <div id="mex2" hidden>so you really don't love me...</div>
   <div class="bottoni">
     <button>yes</button>
     <button>yes, but more</button>
@@ -65,9 +73,8 @@
 
 <script>
   const bottoni = document.querySelectorAll("button");
-  const messaggio = document.getElementById("messaggio");
-
-  const LIMITE = 10;           // numero di tentativi prima del pop up
+  const mex1 = document.getElementById("mex1");
+  const mex2 = document.getElementById("mex2");
   let count = 0;
 
   function sposta(btn) {
@@ -93,7 +100,8 @@
   function scappa(btn) {
       sposta(btn);
       count++;
-      if (count === LIMITE) popup.hidden = false;
+      if (count === 10) mex1.hidden = false;
+      if (count === 20) mex2.hidden = false;
   }
 
   bottoni.forEach(btn => {
