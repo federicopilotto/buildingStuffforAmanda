@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vuoi sposarmi?</title>
+<title>Do you love me</title>
 <style>
     :root 
     { 
-      --bg: linear-gradient(135deg, #ffdde1, #ee9ca7);; 
+      --bg: #fff; 
       --ink: #29009b; 
       --accent: #0886c0; 
     }
@@ -34,30 +34,43 @@
   .bottoni { display: flex; gap: 1.5rem; }
   button {
     font: inherit;
-    font-size: 3rem;
-    padding: 1.5rem 5rem;
+    font-size: 1.5rem;
+    padding: 1.5rem 4rem;
     border: 2px solid var(--accent);
     border-radius: 999px;
     background: var(--accent);
     color: #fff;
     cursor: pointer;
     transition: left 0.25s ease, top 0.25s ease;
-    button:hover { background: #f70000; }
+    
   }
+  button:hover { background: #f70000; }
   button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+  #messaggio {
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-align: center;
+    max-width: 90vw;
+  }
 </style>
 </head>
 <body>
-  <h1>Do you want to marry me?</h1>
+  <h2>do you love me?</h2>
+  <div id="messaggio" hidden>so you don't love me...</div>
   <div class="bottoni">
-    <button>SI</button>
-    <button>SI</button>
+    <button>yes</button>
+    <button>yes, but more</button>
   </div>
 
 <script>
   const bottoni = document.querySelectorAll("button");
+  const messaggio = document.getElementById("messaggio");
 
-  function scappa(btn) {
+  const LIMITE = 10;           // numero di tentativi prima del pop up
+  let count = 0;
+
+  function sposta(btn) {
     // Al primo movimento il bottone passa a position: fixed,
     // lasciando un segnaposto per non far "saltare" il layout.
     if (btn.style.position !== "fixed") {
@@ -75,6 +88,12 @@
     const maxY = window.innerHeight - btn.offsetHeight;
     btn.style.left = Math.random() * maxX + "px";
     btn.style.top = Math.random() * maxY + "px";
+  }
+
+  function scappa(btn) {
+      sposta(btn);
+      count++;
+      if (count === LIMITE) popup.hidden = false;
   }
 
   bottoni.forEach(btn => {
