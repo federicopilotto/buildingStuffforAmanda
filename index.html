@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vuoi sposarmi?</title>
 <style>
-  :root { --bg: #fbeeee; --ink: #4a1626; --accent: #b8264f; }
+    :root 
+    { 
+      --bg: linear-gradient(135deg, #ffdde1, #ee9ca7);; 
+      --ink: #29009b; 
+      --accent: #0886c0; 
+    }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
   body {
@@ -29,20 +34,21 @@
   .bottoni { display: flex; gap: 1.5rem; }
   button {
     font: inherit;
-    font-size: 1.5rem;
-    padding: 0.7rem 2.5rem;
+    font-size: 3rem;
+    padding: 1.5rem 5rem;
     border: 2px solid var(--accent);
     border-radius: 999px;
     background: var(--accent);
     color: #fff;
     cursor: pointer;
     transition: left 0.25s ease, top 0.25s ease;
+    button:hover { background: #f70000; }
   }
   button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 </style>
 </head>
 <body>
-  <h1>Vuoi sposarmi?</h1>
+  <h1>Do you want to marry me?</h1>
   <div class="bottoni">
     <button>SI</button>
     <button>SI</button>
